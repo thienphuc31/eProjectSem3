@@ -9,7 +9,7 @@ using System.ComponentModel;
 namespace eProject1
 {
     [Table("Department")]
-    class Department
+    public class Department
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
