@@ -18,5 +18,8 @@ namespace eProject1
         [ForeignKey("employee_id")]
         public Employee employees { get; set; }
         public int event_id { get; set; }
+        [ForeignKey("event_id")]
+        public Event events { get; set; }
+        public bool status { get; set; }
     }
 }

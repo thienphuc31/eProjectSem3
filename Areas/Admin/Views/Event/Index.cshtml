@@ -17,6 +17,9 @@
                 Title
             </th>
             <th>
+                Attendance
+            </th>
+            <th>
                 Startdate
             </th>
             <th>
@@ -34,6 +37,15 @@
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.event_name)
+                </td>
+                <td>
+                    @if(item.number == null)
+                        {
+                            <span>0</span>
+                        }else
+                            {
+                                @Html.DisplayFor(modelItem => item.number)
+                            }
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.event_startdate)
