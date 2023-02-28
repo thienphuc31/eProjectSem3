@@ -63,5 +63,27 @@ namespace eProject1.Areas.Admin.Controllers
             return View(news);
         }
 
+        [HttpGet]
+        public IActionResult Delete(int? id)
+        {
+            var model = db.News.Find(id);
+            db.News.Remove(model);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Details(int? id)
+        {
+            
+            var news = db.News.FirstOrDefault(m => m.news_id == id);
+            if (news == null)
+            {
+                return NotFound();
+            }
+            news.news_img = "img/" + news.news_img;
+            return View(news);
+        }
+
+
     }
 }

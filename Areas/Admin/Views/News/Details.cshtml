@@ -1,0 +1,25 @@
+﻿@model eProject1.News
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Details</h1>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+<div>
+    <h2>@Model.news_title</h2>
+
+    <p>@Model.news_subtitle</p>
+
+    <img src="@Model.news_img" alt="@Model.news_title" width="200"/>
+
+    <p>@Model.news_text</p>
+
+    <p>@Model.news_date</p>
+</div>
+
+
+
