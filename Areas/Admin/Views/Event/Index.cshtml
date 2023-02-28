@@ -1,0 +1,63 @@
+﻿@model IEnumerable<eProject1.Event>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Event list</h1>
+
+<p>
+    <a href="/Admin/Event/Create">Create New</a>
+</p>
+<table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                Title
+            </th>
+            <th>
+                Startdate
+            </th>
+            <th>
+                Enddate
+            </th>
+            <th>
+                Status
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.event_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.event_startdate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.event_enddate)
+                </td>
+                <td>
+                    @if (item.status)
+                    {
+                        <span>Đang diễn ra</span>
+                    }
+                    else
+                    {
+                        <span>Kết thúc</span>
+                    }
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.event_id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.event_id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.event_id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
