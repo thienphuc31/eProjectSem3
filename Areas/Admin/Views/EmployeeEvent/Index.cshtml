@@ -1,0 +1,60 @@
+﻿@using Newtonsoft.Json
+@model IEnumerable<eProject1.EmployeeEvent>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>@ViewData["Title"]</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Employee</th>
+            <th>Event</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr data-ee-id="@item.EE_id">
+                <td>@item.employee_id</td>
+                <td>@item.event_id</td>
+                <td>@(item.status ? "Registered" : "Pending")</td>
+                <td>
+                    @if (!item.status)
+                    {
+                        <form asp-action="ChangeStatus" method="post">
+                            <input type="hidden" name="ee_id" value="@item.EE_id" />
+                            <input type="hidden" name="status" value="true" />
+                            <button type="submit" class="btn btn-primary">Approve</button>
+                        </form>
+                        <form asp-action="ChangeStatus" method="post">
+                            <input type="hidden" name="ee_id" value="@item.EE_id" />
+                            <input type="hidden" name="status" value="false" />
+                            <button type="submit" class="btn btn-danger">Disapprove</button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section scripts
+{
+    <script>
+     $(document).ready(function () {
+                                    var changed_events = @Html.Raw(JsonConvert.SerializeObject(ViewBag.ChangedEvents));
+                                    $.each(changed_events, function (key, value) {
+                                                                                    var row = $("tr[data-ee-id='" + key + "']");
+                                                                                    if (value) {
+                                                                                                    row.addClass("table-success");
+                                                                                                } else {
+                                                                                                            row.addClass("table-danger");
+                                                                                                        }
+                                                                                                });
+                                                                                });
+    </script>
+}

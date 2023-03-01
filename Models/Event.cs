@@ -12,7 +12,7 @@ namespace eProject1
     public class Event
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int  event_id { get; set; }
         [Required]
         [StringLength(50, MinimumLength = 1, ErrorMessage = "Name from 1 to 50")]

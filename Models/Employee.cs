@@ -28,7 +28,7 @@ namespace eProject1
         public string employee_address { get; set; }
         [Required]
         public string employee_phone { get; set; }
-        public string department_id { get; set; }
+        public int department_id { get; set; }
         [ForeignKey("department_id")]
         public Department Departments { get; set; }
         public List<EmployeeEvent> EmployeeEvents { get; set; }

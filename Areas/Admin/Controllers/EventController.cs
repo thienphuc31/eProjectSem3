@@ -18,10 +18,25 @@ namespace eProject1.Areas.Admin.Controllers
         {
             db = _db;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var res = db.Events.ToList();
-            return View(res);
+            var events = await db.Events
+        .Include(e => e.EmployeeEvents)
+        .ToListAsync();
+
+            foreach (var e in events)
+            {
+                var numberOfEmployeeEvents = await db.EmployeeEvents
+                    .Where(ee => ee.event_id == e.event_id && ee.status)
+                    .CountAsync();
+
+                e.number = numberOfEmployeeEvents;
+
+                // save changes to the database
+                await db.SaveChangesAsync();
+            }
+
+            return View(events);
         }
         [HttpGet]
         public IActionResult Create()
@@ -70,28 +85,6 @@ namespace eProject1.Areas.Admin.Controllers
             
 
             
-        }
-        public async Task<IActionResult> Create(EmployeeEvent employeeEvent)
-        {
-            // your code to save employeeEvent to database
-
-            // get the event that corresponds to the new EmployeeEvent
-            Event eventToUpdate = await db.Events.FindAsync(employeeEvent.event_id);
-
-            // check if the status of the new EmployeeEvent is true
-            if (employeeEvent.status)
-            {
-                // get the total number of EmployeeEvents for the same event_id
-                int numberOfEmployeeEvents = await db.EmployeeEvents.CountAsync(ee => ee.event_id == employeeEvent.event_id);
-
-                // update the number property of the corresponding event
-                eventToUpdate.number = numberOfEmployeeEvents;
-            }
-
-            // save changes to the database
-            await db.SaveChangesAsync();
-
-            return RedirectToAction("Index");
         }
 
     }

@@ -13,7 +13,7 @@ namespace eProject1
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string department_id { get; set; }
+        public int department_id { get; set; }
         [Required]
         public string department_name { get; set; }
     }
