@@ -18,7 +18,7 @@ namespace eProject1.Controllers
         }
         [HttpPost]
         public IActionResult Create(Contact contact)
-        {
+        {   
             try
             {
                 var model = db.Contacts.SingleOrDefault(c => c.contact_title.Equals(contact));

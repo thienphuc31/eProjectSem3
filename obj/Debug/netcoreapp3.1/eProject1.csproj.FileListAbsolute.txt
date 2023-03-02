@@ -334,3 +334,5 @@ D:\Wordspace\New folder\eProjectSem3\obj\Debug\netcoreapp3.1\eProject1.dll
 D:\Wordspace\New folder\eProjectSem3\obj\Debug\netcoreapp3.1\eProject1.pdb
 D:\Wordspace\New folder\eProjectSem3\obj\Debug\netcoreapp3.1\eProject1.genruntimeconfig.cache
 >>>>>>> 1445ce963f7c3f109748c5bd27c0c1c8c436655a
+C:\Users\admin\Desktop\eProject\eProject1\obj\Debug\netcoreapp3.1\Razor\Views\Contact\Create.cshtml.g.cs
+C:\Users\admin\Desktop\eProject\eProject1\obj\Debug\netcoreapp3.1\Razor\Views\Home\Details.cshtml.g.cs
