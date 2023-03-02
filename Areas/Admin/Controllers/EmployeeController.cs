@@ -1,12 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using eProject1.Models;
-using Microsoft.AspNetCore.Http;
-using System.IO;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq;
 
 
 namespace eProject1.Areas.Admin.Controllers
@@ -14,26 +9,26 @@ namespace eProject1.Areas.Admin.Controllers
     [Area("Admin")]
     public class EmployeeController : Controller
     {
-       
+
         private DatabaseContext db;
         public EmployeeController(DatabaseContext _db)
         {
             db = _db;
         }
-        
+
         public IActionResult Index()
         {
             var res = db.Employees.Include(e => e.Departments).ToList();
             return View(res);
         }
-        
+
         [HttpGet]
         public IActionResult Create()
         {
             ViewBag.Departments = db.Departments.ToList();
             return View();
         }
-        
+
         [HttpPost]
         public IActionResult Create(Employee employee)
         {

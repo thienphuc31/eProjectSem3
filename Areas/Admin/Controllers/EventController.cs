@@ -2,11 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using eProject1.Models;
 
 namespace eProject1.Areas.Admin.Controllers
 {
@@ -73,18 +70,18 @@ namespace eProject1.Areas.Admin.Controllers
             return View(model);
         }
 
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit( Event events)
+        public IActionResult Edit(Event events)
         {
             var model = db.Events.Find(events.event_id);
             model.status = events.status;
             db.SaveChanges();
             return RedirectToAction("Index");
-            
 
-            
+
+
         }
 
     }

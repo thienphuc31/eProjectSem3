@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 namespace eProject1
 {
     [Table("Event")]
@@ -13,7 +9,7 @@ namespace eProject1
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int  event_id { get; set; }
+        public int event_id { get; set; }
         [Required]
         [StringLength(50, MinimumLength = 1, ErrorMessage = "Name from 1 to 50")]
         public string event_name { get; set; }

@@ -1,12 +1,10 @@
-﻿using eProject1.Models;
-
+﻿
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.Extensions;
 
 namespace eProject1.Areas.Admin.Controllers
 {
@@ -20,7 +18,7 @@ namespace eProject1.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-            var employeeEvents = db.EmployeeEvents.Include(e => e.employees).Include(e => e.events).OrderBy(e => e.status).ThenBy(e=>e.EE_id).ToList();
+            var employeeEvents = db.EmployeeEvents.Include(e => e.employees).Include(e => e.events).OrderBy(e => e.status).ThenBy(e => e.EE_id).ToList();
             ViewBag.ChangedEvents = HttpContext.Session.TryGetValue("changed_events", out byte[] value)
                 ? JsonConvert.DeserializeObject<Dictionary<int, bool>>(System.Text.Encoding.UTF8.GetString(value))
                 : new Dictionary<int, bool>();

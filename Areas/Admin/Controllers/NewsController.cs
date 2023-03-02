@@ -1,19 +1,15 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
-using eProject1.Models;
 
 namespace eProject1.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class NewsController : Controller
     {
-       
+
         private DatabaseContext db;
         public NewsController(DatabaseContext _db)
         {
@@ -41,7 +37,7 @@ namespace eProject1.Areas.Admin.Controllers
                         var filePath = Path.Combine("wwwroot/admin/img", file.FileName);
                         var stream = new FileStream(filePath, FileMode.Create);
                         file.CopyToAsync(stream);
-                        news.news_img = "img/" + file.FileName;
+                        news.news_img = "admin/img/" + file.FileName;
                         db.News.Add(news);
                         db.SaveChanges();
                         return RedirectToAction("Index");
@@ -59,7 +55,7 @@ namespace eProject1.Areas.Admin.Controllers
 
                 ModelState.AddModelError(string.Empty, ex.Message);
             }
-            
+
             return View(news);
         }
 
@@ -74,13 +70,13 @@ namespace eProject1.Areas.Admin.Controllers
 
         public IActionResult Details(int? id)
         {
-            
+
             var news = db.News.FirstOrDefault(m => m.news_id == id);
             if (news == null)
             {
                 return NotFound();
             }
-            news.news_img = "img/" + news.news_img;
+
             return View(news);
         }
 

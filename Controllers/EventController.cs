@@ -1,11 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
-
 
 namespace eProject1.Controllers
 {
@@ -24,7 +18,7 @@ namespace eProject1.Controllers
         {
             if (id == null)
             {
-                return new BadRequestResult(); 
+                return new BadRequestResult();
             }
 
             Event events = db.Events.Find(id);
