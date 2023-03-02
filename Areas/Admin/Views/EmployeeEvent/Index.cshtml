@@ -28,18 +28,18 @@
                     {
                         <form asp-action="ChangeStatus" method="post">
                             <input type="hidden" name="ee_id" value="@item.EE_id" />
-                            <input type="hidden" name="status" value="true" />
-                            <button type="submit" class="btn btn-primary">Approve</button>
+                            <input type="submit" name="action" value="confirm" class="btn btn-primary" />
                         </form>
                         <form asp-action="ChangeStatus" method="post">
                             <input type="hidden" name="ee_id" value="@item.EE_id" />
-                            <input type="hidden" name="status" value="false" />
-                            <button type="submit" class="btn btn-danger">Disapprove</button>
+                            <input type="submit" name="action" value="ignore" class="btn btn-danger" onclick="return confirm('Do you want to ignore this?')" />
                         </form>
                     }
                 </td>
             </tr>
         }
+
+
     </tbody>
 </table>
 @section scripts
