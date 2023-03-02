@@ -2,32 +2,44 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
+using System.Linq;
 
 namespace eProject1.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ILogger<HomeController> logger;
+        private readonly DatabaseContext db;
+        public HomeController(ILogger<HomeController> _logger, DatabaseContext _db)
         {
-            _logger = logger;
+            logger = _logger;
+            db = _db;
         }
-
         public IActionResult Index()
         {
-            return View();
+            var res = db.News.ToList();
+            return View(res);
         }
+        public IActionResult Details(int? id)
+        {
+            var news = db.News.FirstOrDefault(m => m.news_id == id);
+            if (news == null)
+            {
+                return NotFound();
+            }
 
-        public IActionResult Privacy()
+            return View(news);
+        }
+        public IActionResult Event()
         {
             return View();
         }
+        [HttpGet]
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+
+        public IActionResult FAQ()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View();
         }
     }
 }
