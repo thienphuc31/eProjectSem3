@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿using Microsoft.AspNetCore.Http;
+=======
+using Microsoft.AspNetCore.Http;
+>>>>>>> 5fceae9c90309a2622370c29e6b138246d17bd1c
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.IO;
