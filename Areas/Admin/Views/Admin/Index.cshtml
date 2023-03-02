@@ -1,4 +1,4 @@
-﻿@model IEnumerable<eProject1.Admin>
+﻿@model IEnumerable<eProject1.Employee>
 
 @{
     ViewData["Title"] = "Index";
@@ -14,10 +14,10 @@
     <thead class="thead-dark">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.admin_name)
+                @Html.DisplayNameFor(model => model.employee_name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.admin_password)
+                @Html.DisplayNameFor(model => model.employee_password)
             </th>
             <th></th>
         </tr>
@@ -27,14 +27,14 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.admin_name)
+                    @Html.DisplayFor(modelItem => item.employee_name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.admin_password)
+                    @Html.DisplayFor(modelItem => item.employee_password)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.admin_id">Edit</a> |
-                    <a asp-action="Delete" asp-route-id="@item.admin_id">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.employee_id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.employee_id">Delete</a>
                 </td>
             </tr>
         }

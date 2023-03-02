@@ -28,6 +28,8 @@ namespace eProject1
         public string employee_address { get; set; }
         [Required]
         public string employee_phone { get; set; }
+        [Required]
+        public int Role { get; set; }
         public string department_id { get; set; }
         [ForeignKey("department_id")]
         public Department Departments { get; set; }

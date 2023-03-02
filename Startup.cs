@@ -5,9 +5,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace eProject1
 {
@@ -24,9 +21,11 @@ namespace eProject1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<DatabaseContext>(
-               options => options.UseSqlServer(Configuration.GetConnectionString("ConnectDB"))
-               );
+            services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnectDB")));
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(10);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,19 +42,15 @@ namespace eProject1
             app.UseStaticFiles();
 
             app.UseRouting();
-
             app.UseAuthorization();
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                  name: "areas",
-                  pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-                );
-            });
+                    name: "Area",
+                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
-            app.UseEndpoints(endpoints =>
-            {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

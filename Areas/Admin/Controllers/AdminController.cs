@@ -17,7 +17,7 @@ namespace eProject1.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-            var res = db.Admins.ToList();
+            var res = db.Employees.ToList();
             return View(res);
         }
 
