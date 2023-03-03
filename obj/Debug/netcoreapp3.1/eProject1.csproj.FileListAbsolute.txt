@@ -339,3 +339,4 @@ C:\Users\admin\Desktop\eProject\eProject1\obj\Debug\netcoreapp3.1\Razor\Views\Ho
 C:\Users\admin\Desktop\eProject\eProject1\obj\Debug\netcoreapp3.1\Razor\Views\News\Index.cshtml.g.cs
 C:\Users\admin\Desktop\eProject\eProject1\obj\Debug\netcoreapp3.1\Razor\Views\News\Details.cshtml.g.cs
 C:\Users\admin\Desktop\eProject\eProject1\obj\Debug\netcoreapp3.1\Razor\Views\Event\Index.cshtml.g.cs
+C:\Users\admin\Desktop\eProject\eProject1\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\Index.cshtml.g.cs
