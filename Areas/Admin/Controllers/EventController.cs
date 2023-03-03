@@ -41,7 +41,7 @@ namespace eProject1.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Create(Event events, IFormFile file)
+        public IActionResult Create(Event events)
         {
             try
             {

@@ -336,3 +336,6 @@ D:\Wordspace\New folder\eProjectSem3\obj\Debug\netcoreapp3.1\eProject1.genruntim
 >>>>>>> 1445ce963f7c3f109748c5bd27c0c1c8c436655a
 C:\Users\admin\Desktop\eProject\eProject1\obj\Debug\netcoreapp3.1\Razor\Views\Contact\Create.cshtml.g.cs
 C:\Users\admin\Desktop\eProject\eProject1\obj\Debug\netcoreapp3.1\Razor\Views\Home\Details.cshtml.g.cs
+C:\Users\admin\Desktop\eProject\eProject1\obj\Debug\netcoreapp3.1\Razor\Views\News\Index.cshtml.g.cs
+C:\Users\admin\Desktop\eProject\eProject1\obj\Debug\netcoreapp3.1\Razor\Views\News\Details.cshtml.g.cs
+C:\Users\admin\Desktop\eProject\eProject1\obj\Debug\netcoreapp3.1\Razor\Views\Event\Index.cshtml.g.cs

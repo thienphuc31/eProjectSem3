@@ -56,16 +56,15 @@
                 <td>
                     @if (item.status)
                     {
-                        <span>Đang diễn ra</span>
+                    <span>Eligible to join</span>
                     }
                     else
                     {
-                        <span>Kết thúc</span>
+                        <span>End</span>
                     }
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.event_id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.event_id">Details</a> |
+                    <a asp-action="Edit" asp-route-id="@item.event_id">Edit Status</a> |
                     <a asp-action="Delete" asp-route-id="@item.event_id">Delete</a>
                 </td>
             </tr>

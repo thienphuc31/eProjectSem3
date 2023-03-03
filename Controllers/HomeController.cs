@@ -17,19 +17,17 @@ namespace eProject1.Controllers
         }
         public IActionResult Index()
         {
-            var res = db.News.ToList();
-            return View(res);
-        }
-        public IActionResult Details(int? id)
-        {
-            var news = db.News.FirstOrDefault(m => m.news_id == id);
-            if (news == null)
+            var viewModel = new MyViewModel()
             {
-                return NotFound();
-            }
+                News = db.News.ToList(),
+                Events = db.Events.ToList()
+               
+            };
 
-            return View(news);
+            return View(viewModel);
         }
+
+        
         public IActionResult Event()
         {
             return View();

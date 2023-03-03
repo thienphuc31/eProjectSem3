@@ -1,4 +1,18 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿$(document).ready(function () {
+    // Khởi tạo carousel
+    $("#myCarousel").carousel({
+        interval: 3000, // thời gian chuyển đổi giữa các ảnh
+        pause: false, // không tạm dừng khi rê chuột lên
+        wrap: true, // quay vòng lại ảnh đầu tiên khi đến ảnh cuối cùng
+    });
 
-// Write your JavaScript code.
+    // Xử lý sự kiện click vào ảnh đầu tiên
+    $("#myCarousel .carousel-item:first-child img").on("click", function () {
+        window.location.href = "/News/Index";
+    });
+
+    // Xử lý sự kiện click vào ảnh thứ hai
+    $("#myCarousel .carousel-item:nth-child(2) img").on("click", function () {
+        window.location.href = "/Event/Index";
+    });
+});

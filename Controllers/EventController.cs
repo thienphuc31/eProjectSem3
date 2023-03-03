@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
+using System.Linq;
 
 namespace eProject1.Controllers
 {
@@ -12,7 +12,8 @@ namespace eProject1.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            var model = db.Events.ToList();
+            return View(model);
         }
         public IActionResult Details(int? id)
         {

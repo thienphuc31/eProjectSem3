@@ -1,0 +1,34 @@
+﻿@model IEnumerable<eProject1.News>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 style="object-position:center">MEE NEWS</h1>
+
+<div style="height:100px"></div>
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3">
+                <div class="card mb-3 shadow-sm">
+                    <img src="/@item.news_img" class="card-img-top" alt="..." style="object-fit:cover" width="200px" height="200px">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.news_title</h5>
+                        <p class="card-text">@item.news_subtitle</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a asp-controller="News" asp-action="Details" asp-route-id="@item.news_id" class="btn btn-sm btn-outline-secondary">View</a>
+                            </div>
+                            <small class="text-muted">@item.news_date.ToString("dd/MM/yyyy")</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+        
+    </div>
+</div>

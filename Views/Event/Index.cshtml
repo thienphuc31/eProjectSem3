@@ -1,0 +1,40 @@
+﻿@model IEnumerable<eProject1.Event>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 style="object-position:center">MEE EVENTS</h1>
+
+<div style="height:100px"></div>
+
+<section class="section-content padding-y">
+
+
+    <!-- Thêm phần hiển thị danh sách tin tức -->
+    <div class="container">
+        <div class="row">
+
+            <!-- Thêm phần hiển thị danh sách Event -->
+            @foreach (var item in Model)
+            {
+                <div class="col-md-3">
+                    <div class="card mb-3 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title"><a asp-controller="Event" asp-action="Details" asp-route-id="@item.event_id">@item.event_name</a></h5>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a asp-controller="Event" asp-action="Details" asp-route-id="@item.event_id" class="btn btn-sm btn-outline-secondary">Details</a>
+                                </div>
+                                <small class="text-muted">@item.event_startdate.ToString("dd/MM/yyyy") - @item.event_enddate.ToString("dd/MM/yyyy")</small>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+</section>
