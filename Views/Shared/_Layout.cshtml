@@ -110,8 +110,20 @@
                                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">FAQ</a>
 
                                             </li>
-                                            <li class="apply_now"><a href="#">Login</a></li>
-                                        </ul>
+                                            <li class="apply_now">
+                                                @{ byte[] userName; }
+                                                @if (Context.Session.TryGetValue("employee_name", out userName) && userName != null)
+                                                {
+                                        <li class="nav-item">
+                                            <a asp-area="" asp-controller="Account" asp-action="Logout">Hi &nbsp;@System.Text.Encoding.UTF8.GetString(userName) Logout </a>
+                                        </li> }
+                                                    else
+                                                    {
+                                        <li class="nav-item">
+                                            @Html.ActionLink("Login", "Login", "Account")
+                                        </li>            }
+                                                </li>
+                                            </ul>
                                     </div><!-- navbar-collapse -->
 
                                 </div>

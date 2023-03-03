@@ -1,0 +1,21 @@
+﻿@model eProject1.Employee
+@{ 
+    ViewBag.title = "Login";
+}
+<form asp-action="Login" asp-controller="Account" method="post">
+    <div class="form-group">
+        <div class="form-control">
+            @Html.DisplayNameFor(model => model.employee_name)
+            <input type="text" name="name" />
+            @Html.ValidationMessageFor(model => model.employee_name)
+        </div>
+        <div class="form-control">
+            @Html.DisplayNameFor(model => model.employee_password)
+            <input type="password" name="pass" />
+            @Html.ValidationMessageFor(model => model.employee_password)
+        </div>
+        <div class="form-control">
+          <input type="submit" value="Login" class="btn btn-primary" />
+        </div>
+    </div>
+</form>
