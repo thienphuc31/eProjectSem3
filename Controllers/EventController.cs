@@ -31,6 +31,22 @@ namespace eProject1.Controllers
 
             return View(events);
         }
+        public IActionResult Games()
+        {
+            var model = db.Events.Where(e => e.event_type == 2).ToList();
+            return View(model);
+        }
+        public IActionResult Meetings()
+        {
+            var model = db.Events.Where(e => e.event_type == 1).ToList();
+            return View(model);
+        }
+        public IActionResult Competitions()
+        {
+            var model = db.Events.Where(e => e.event_type == 3).ToList();
+            return View(model);
+        }
+
 
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -41,27 +42,37 @@ namespace eProject1.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Create(Event events)
+        public IActionResult Create(Event events, IFormFile file)
         {
             try
             {
-                var model = db.Employees.SingleOrDefault(c => c.employee_name.Equals(events.event_name));
-                if (model == null && ModelState.IsValid)
+                if (ModelState.IsValid)
                 {
-                    db.Events.Add(events);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    ViewBag.msg = "Fail";
+                    if (file != null)
+                    {
+                        var filePath = Path.Combine("wwwroot/admin/img", file.FileName);
+                        var stream = new FileStream(filePath, FileMode.Create);
+                        file.CopyToAsync(stream);
+                        events.event_img = "admin/img/" + file.FileName;
+                        db.Events.Add(events);
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, "Fail");
+                    }
+
+
                 }
             }
             catch (Exception ex)
             {
-                ViewBag.msg = ex.Message;
+
+                ModelState.AddModelError(string.Empty, ex.Message);
             }
-            return View();
+
+            return View(events);
         }
         [HttpGet]
         public IActionResult Edit(int? id)

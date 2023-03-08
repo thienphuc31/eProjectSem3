@@ -25,6 +25,7 @@
     <!-- Thêm phần hiển thị danh sách tin tức -->
     <div class="container">
         <div class="row">
+            <h1 style="object-position:center">MEE NEWS</h1>
             @foreach (var item in Model.News)
             {
                 <div class="col-md-3">
@@ -43,14 +44,16 @@
                     </div>
                 </div>
             }
-
+            <h1 style="object-position:center">MEE NEWS</h1>
             <!-- Thêm phần hiển thị danh sách Event -->
             @foreach (var item in Model.Events)
             {
                 <div class="col-md-3">
                     <div class="card mb-3 shadow-sm">
+                        <img src="/@item.event_img" class="card-img-top" alt="..." style="object-fit:cover" width="200px" height="200px">
                         <div class="card-body">
                             <h5 class="card-title">@item.event_name</h5>
+                            <p class="card-text">@item.event_content</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
                                     <a asp-controller="Event" asp-action="Details" asp-route-id="@item.event_id" class="btn btn-sm btn-outline-secondary">View</a>

@@ -5,39 +5,61 @@
 }
 
 <h2>@Model.event_name</h2>
+<div style="display: flex;">
+    <div style="flex-grow: 1;">
+        <table class="table">
+            <tr>
+                <td>Event Request:</td>
+                <td>@Model.event_content</td>
+            </tr>
+            <tr>
+                <td>Start Date:</td>
+                <td>@Model.event_startdate.ToShortDateString()</td>
+            </tr>
+            <tr>
+                <td>End Date:</td>
+                <td>@Model.event_enddate.ToShortDateString()</td>
+            </tr>
+            <tr>
+                <td>Type:</td>
+                <td>
+                    @if (Model.event_type == 1)
+                    {
+                        <span>Meetings</span>
+                    }@if (Model.event_type == 2)
+                    {
+                        <span>Games</span>
+                    }
+                    @if (Model.event_type == 3)
+                    {
+                        <span>Competitions</span>
+                    }
+                </td>
 
-<table class="table">
-    <tr>
-        <td>Event Request:</td>
-        <td>@Model.event_request</td>
-    </tr>
-    <tr>
-        <td>Start Date:</td>
-        <td>@Model.event_startdate.ToShortDateString()</td>
-    </tr>
-    <tr>
-        <td>End Date:</td>
-        <td>@Model.event_enddate.ToShortDateString()</td>
-    </tr>
-    <tr>
-        <td>Status:</td>
-        <td>
-            @if (@Model.status)
-            {
-                <span>Đang diễn ra</span>
-            }
-            else
-            {
-                <span>Kết thúc</span>
-            }
-            </td>
-    </tr>
-</table>
-
-@using (Html.BeginForm("Register", "EmployeeEvent", FormMethod.Post))
-{
-    @Html.Hidden("event_id", Model.event_id)
-    <input type="submit" value="Register" class="btn btn-primary" onclick="return confirm('Are you sure to join this Event')"/>
-}
+            </tr>
+            <tr>
+                <td>Status:</td>
+                <td>
+                    @if (@Model.status)
+                    {
+                        <span>Happening</span>
+                    }
+                    else
+                    {
+                        <span>End</span>
+                    }
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <img src="/@Model.event_img" alt="Event Image" style="width: 300px; height: auto;">
+    </div>
+</div>
+        @using (Html.BeginForm("Register", "EmployeeEvent", FormMethod.Post))
+        {
+            @Html.Hidden("event_id", Model.event_id)
+            <input type="submit" value="Register" class="btn btn-primary" onclick="return confirm('Are you sure to join this Event')" />
+        }
 
 

@@ -15,13 +15,17 @@ namespace eProject1
        
         public string event_name { get; set; }
         [Required]
-        public string event_request { get; set; }
+        public string event_content { get; set; }
+
+        public string event_img { get; set; }
 
         public int number { get; set; } = 0;
         [Required]
         public DateTime event_startdate { get; set; }
         [Required]
         public DateTime event_enddate { get; set; }
+        [Required]
+        public int event_type { get; set; }
         [Required]
         public bool status { get; set; } = true;
         public List<EmployeeEvent> EmployeeEvents { get; set; }

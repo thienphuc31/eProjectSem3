@@ -1,24 +1,18 @@
 ﻿@model IEnumerable<eProject1.Event>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Meetings";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1 style="object-position:center">MEE EVENTS</h1>
+
+<h1 style="object-position:center">MEE Meetings</h1>
 
 <div style="height:100px"></div>
-
-<section class="section-content padding-y">
-
-
-    <!-- Thêm phần hiển thị danh sách tin tức -->
-    <div class="container">
-        <div class="row">
-
-            <!-- Thêm phần hiển thị danh sách Event -->
-            @foreach (var item in Model)
-            {
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
             <div class="col-md-3">
                 <div class="card mb-3 shadow-sm">
                     <img src="/@item.event_img" class="card-img-top" alt="..." style="object-fit:cover" width="200px" height="200px">
@@ -34,8 +28,8 @@
                     </div>
                 </div>
             </div>
-            }
-        </div>
-    </div>
+        }
 
-</section>
+
+    </div>
+</div>

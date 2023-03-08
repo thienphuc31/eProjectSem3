@@ -19,10 +19,10 @@ namespace eProject1.Controllers
         {
             var viewModel = new MyViewModel()
             {
-                News = db.News.ToList(),
-                Events = db.Events.ToList()
-               
+                News = db.News.OrderByDescending(n => n.news_id).Take(4).ToList(),
+                Events = db.Events.OrderByDescending(e => e.event_id).Take(4).ToList()
             };
+
 
             return View(viewModel);
         }
