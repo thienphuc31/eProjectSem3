@@ -1,34 +1,20 @@
-﻿@model eProject1.News
+@model eProject1.News
 
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<section class="Section-content bg-white padding-y">
+<section class="content" style="text-align:center">
     <div class="container">
-        <div class="row">
-            <aside class="col-md-6">
-                <div class="card">
-                    <div>
-                        <a href="#"><img src="/@Model.news_img" width="50" /></a>
-                    </div>
-                </div>
-            </aside>
-            <ain class="col-md-6">
-                <article class="news-info-aside">
-                    <h2 class="title mt-3">@Model.news_title</h2>
-                </article>
-            </ain>
-        </div>
+
+    <div id="content" style="text-align:right">
+    <h1 style="text-align:center">@Model.news_title</h1>
+    <div style="text-align:center">
+        <img src="/@Model.news_img" width="960" alt="" />
+        <p>@Model.news_date</p>
     </div>
-</section>
-<section class="section-name padding-y bg">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                @Model.news_text
-            </div>
-        </div>
+    <p style="text-align:center">@Model.news_text</p>
     </div>
-</section>
+     </div>
+ </section>
 
