@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 
 namespace eProject1.Controllers
@@ -18,7 +19,7 @@ namespace eProject1.Controllers
         public IActionResult Register(int event_id)
         {
             // Get the current employee
-            var currentEmployeeId = User.Identity.Name;
+            var currentEmployeeId = HttpContext.Session.GetString("employee_id");
 
             // Check if the current employee has already registered for this event
             if (db.EmployeeEvents.Any(ee => ee.event_id == event_id && ee.employee_id == currentEmployeeId))
@@ -37,7 +38,7 @@ namespace eProject1.Controllers
             // Add the new EmployeeEvent to the database
             db.EmployeeEvents.Add(newEmployeeEvent);
             db.SaveChanges();
-            return View();
+            return RedirectToAction("Index","Home");
         }
     }
 }

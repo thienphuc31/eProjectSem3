@@ -36,6 +36,7 @@ namespace eProject1.Controllers
                     if (em.employee_password.Equals(pass))
                     {
                         HttpContext.Session.SetString("employee_name", name);
+                        HttpContext.Session.SetString("employee_id", em.employee_id);
 
                         if (em.Role == Constants.UserType.Admin)
                         {

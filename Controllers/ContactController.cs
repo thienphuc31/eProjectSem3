@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
 
@@ -11,35 +12,38 @@ namespace eProject1.Controllers
         {
             db = _db;
         }
+        public ActionResult Index()
+        {
+            // Lấy thông tin employee_id từ Session
+            string employee_id = HttpContext.Session.GetString("employee_id");
+
+            // Truy vấn các Contact có employee_id tương ứng từ CSDL
+            var model = db.Contacts.Where(c => c.employee_id == employee_id).ToList();
+
+            // Trả về view Index với danh sách các Contact đã lấy được
+            return View(model);
+        }
+
         [HttpGet]
         public IActionResult Create()
         {
+            
+            
             return View();
         }
         [HttpPost]
         public IActionResult Create(Contact contact)
-        {   
-            try
+        {
+            if (ModelState.IsValid)
             {
-                var model = db.Contacts.SingleOrDefault(c => c.contact_title.Equals(contact));
-                if (ModelState.IsValid)
-                {
-                    db.Add(contact);
-                    RedirectToAction("Create");
-
-                }
-                else
-                {
-                    ModelState.AddModelError(string.Empty, "Fail");
-                }
-
+                contact.employee_id = HttpContext.Session.GetString("employee_id");
+                contact.createdate = DateTime.Now;
+                db.Contacts.Add(contact);
+                db.SaveChanges();
+                return RedirectToAction("Index","Home");
             }
-            catch (Exception ex)
-            {
-                ModelState.AddModelError(string.Empty, ex.Message);
-
-            }
-            return View();
+            return View(contact);
         }
+
     }
 }
