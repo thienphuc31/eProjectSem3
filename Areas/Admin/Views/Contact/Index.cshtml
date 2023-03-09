@@ -1,0 +1,121 @@
+﻿@model IEnumerable<eProject1.Contact>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Requests from Employee</h1>
+
+
+<table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                Title
+            </th>
+            <th>
+                Message
+            </th>
+            <th>
+                Creatdate
+            </th>
+            <th>
+                Answer from Admin
+            </th>
+
+            <th>
+                Employee Name
+            </th>
+            <th>
+                Status
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.contact_title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.contact_text)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.createdate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.answer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.employees.employee_name)
+                </td>
+                <td>
+                    @if (item.status == 1)
+                    {
+                        <button class="btn btn-primary answer-btn" data-contactid="@item.contact_id">Answer</button>
+                    }
+                    else if (item.status == 2)
+                    {
+                        <span class="text-success">Approved</span>
+                    }
+                    else if (item.status == 3)
+                    {
+                        <span class="text-danger">Rejected</span>
+                    }
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+@foreach (var contact in Model)
+{
+    @if (contact.status == 1)
+    {
+        <div id="answer-input-@contact.contact_id" style="display:none;">
+            <form method="post" action="@Url.Action("UpdateAnswer")">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="id" value="@contact.contact_id" />
+                <input type="hidden" name="status" value="@contact.status" />
+                <div class="form-group">
+                    <label>Answer</label>
+                    <textarea name="answer" class="form-control">@contact.answer</textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="submit" class="btn btn-success" name="approve" value="true">Approve</button>
+                    <button type="submit" class="btn btn-danger" name="reject" value="true">Reject</button>
+                </div>
+            </form>
+        </div>
+    }
+}
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $('.answer-btn').click(function () {
+                var contactId = $(this).data('contactid');
+                $('#answer-input-' + contactId).toggle();
+            });
+
+            $('.approve-btn').click(function () {
+                var contactId = $(this).data('contactid');
+                $.post('/Admin/Contact/UpdateAnswer', { id: contactId, answer: $('#answer-' + contactId).val(), status: 2 }, function () {
+                    window.location.reload();
+                });
+            });
+
+            $('.reject-btn').click(function () {
+                var contactId = $(this).data('contactid');
+                $.post('/Admin/Contact/UpdateAnswer', { id: contactId, answer: $('#answer-' + contactId).val(), status: 3 }, function () {
+                    window.location.reload();
+                });
+            });
+        });
+    </script>
+}
+

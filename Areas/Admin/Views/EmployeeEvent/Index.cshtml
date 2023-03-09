@@ -20,20 +20,31 @@
         @foreach (var item in Model)
         {
             <tr data-ee-id="@item.EE_id">
-                <td>@item.employee_id</td>
-                <td>@item.event_id</td>
-                <td>@(item.status ? "Registered" : "Pending")</td>
+                <td>@item.employees.employee_name</td>
+                <td>@item.events.event_name</td>
+                <td>
+                    @if (item.status)
+                    {
+
+
+                        <span class="text-success">Registered</span>}
+                    else
+                    {
+                        <span>Pending</span>}
+                            </td>
                 <td>
                     @if (!item.status)
-                    {
-                        <form asp-action="ChangeStatus" method="post">
+                    {<div style="display:flex">
+                        <form asp-action="ChangeStatus" method="post" style="padding:5px">
                             <input type="hidden" name="ee_id" value="@item.EE_id" />
                             <input type="submit" name="action" value="confirm" class="btn btn-primary" />
                         </form>
-                        <form asp-action="ChangeStatus" method="post">
+                        <form asp-action="ChangeStatus" method="post" style="padding:5px">
                             <input type="hidden" name="ee_id" value="@item.EE_id" />
                             <input type="submit" name="action" value="ignore" class="btn btn-danger" onclick="return confirm('Do you want to ignore this?')" />
                         </form>
+                    </div>
+                        
                     }
                 </td>
             </tr>

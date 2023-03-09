@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Contact</h1>
+<h1>Your requests</h1>
 
-<table class="table">
-    <thead>
+<table class="table table-bordered" >
+    <thead style="background-color: #0060B1; color:white " >
         <tr>
             <th>
                 Title
@@ -20,12 +20,15 @@
                 Answer from Admin
             </th>
             <th>
+                CreateDate
+            </th>
+            <th>
                 Status
             </th>
-            <th></th>
+            
         </tr>
     </thead>
-    <tbody>
+    <tbody style="border: 1px solid black;">
         @foreach (var item in Model)
         {
             <tr>
@@ -34,6 +37,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.contact_text)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.createdate)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.answer)
@@ -45,11 +51,11 @@
                     }
                     else if (item.status == 2)
                     {
-                        <span>Approved</span>
+                        <span class="text-success">Approved</span>
                     }
                     else if (item.status == 3)
                     {
-                        <span>Rejected</span>
+                        <span class="text-danger">Rejected</span>
                     }
                 </td>
             </tr>

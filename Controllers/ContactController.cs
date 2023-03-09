@@ -7,20 +7,20 @@ namespace eProject1.Controllers
 {
     public class ContactController : Controller
     {
-        private readonly DatabaseContext db;
+        private DatabaseContext db;
         public ContactController(DatabaseContext _db)
         {
             db = _db;
         }
-        public ActionResult Index()
+        public IActionResult Index()
         {
-            // Lấy thông tin employee_id từ Session
+          
             string employee_id = HttpContext.Session.GetString("employee_id");
 
-            // Truy vấn các Contact có employee_id tương ứng từ CSDL
+           
             var model = db.Contacts.Where(c => c.employee_id == employee_id).ToList();
 
-            // Trả về view Index với danh sách các Contact đã lấy được
+           
             return View(model);
         }
 

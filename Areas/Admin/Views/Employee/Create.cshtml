@@ -52,15 +52,23 @@
                 <label asp-for="department_id" class="control-label">Department</label>
                 <select asp-for="department_id" class="form-control">
                     @foreach (var item in ViewBag.Departments as List<eProject1.Department>)
-        {
-        <option value="@item.department_id">@item.department_name</option>
-        } 
+                    {
+                        <option value="@item.department_id">@item.department_name</option>
+                    }
                 </select>
-        </div>
-        <div class="form-group">
-            <input type="submit" value="Create" class="btn btn-primary" />
-        </div>
-    </form>
+            </div>
+            <div class="form-group">
+                <label asp-for="Role" class="control-label">Role</label>
+                <select asp-for="Role" class="form-control">
+                    <option value="0">Admin</option>
+                    <option value="1">Employee</option>
+                </select>
+                <span asp-validation-for="Role" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
 </div>
 </div>
 
