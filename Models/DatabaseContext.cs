@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using eProject1.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace eProject1
 {
@@ -13,6 +14,9 @@ namespace eProject1
         public DbSet<EmployeeEvent> EmployeeEvents { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<News> News { get; set; }
+        public DbSet<Question> Questions { get; set; }
+
+        public DbSet<Feedback> FAQS { get; set; }
 
 
 

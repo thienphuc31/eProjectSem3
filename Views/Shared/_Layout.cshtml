@@ -66,36 +66,36 @@
                                     <!-- Collect the nav links, forms, and other content for toggling -->
                                     <div class="collapse navbar-collapse" id="main-nav">
                                         <ul class="nav navbar-nav navbar-right">
-                                            <li class="active dropdown">
+                                            <li>
                                                 <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
 
                                             </li>
                                             <li class=" dropdown">
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">News</a>
+                                                <a a asp-controller="Event" asp-action="Index" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">News</a>
                                                 <ul class="dropdown-menu">
                                                     <li class="dropdown">
                                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Events</a>
                                                         <ul class="dropdown-menu">
-                                                            <li><a href="/Event/Meetings">Meetings</a></li>
-                                                            <li><a href="/Event/Games">Games</a></li>
-                                                            <li><a href="/Event/Competitions">Competitions</a></li>
+                                                            <li><a asp-controller="Event" asp-action="Meetings">Meetings</a></li>
+                                                            <li><a asp-controller="Event" asp-action="Games">Games</a></li>
+                                                            <li><a asp-controller="Event" asp-action="Competitions">Competitions</a></li>
                                                         </ul>
                                                     </li>
                                                     <li class="dropdown">
                                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Events Upcoming</a>
                                                         <ul class="dropdown-menu">
-                                                            <li><a href="/Event/Meetings">Meetings</a></li>
-                                                            <li><a href="/Event/Games">Games</a></li>
-                                                            <li><a href="/Event/Competitions">Competitions</a></li>
+                                                            <li><a asp-controller="Event" asp-action="Meetings">Meetings</a></li>
+                                                            <li><a asp-controller="Event" asp-action="Games">Games</a></li>
+                                                            <li><a asp-controller="Event" asp-action="Competitions">Competitions</a></li>
                                                         </ul>
                                                     </li>
 
                                                     <li class="dropdown">
                                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Recent Events </a>
                                                         <ul class="dropdown-menu">
-                                                            <li><a href="/Event/Meetings">Meetings</a></li>
-                                                            <li><a href="/Event/Games">Games</a></li>
-                                                            <li><a href="/Event/Competitions">Competitions</a></li>
+                                                            <li><a asp-controller="Event" asp-action="Meetings">Meetings</a></li>
+                                                            <li><a asp-controller="Event" asp-action="Games">Games</a></li>
+                                                            <li><a asp-controller="Event" asp-action="Competitions">Competitions</a></li>
                                                         </ul>
                                                     </li>
 
@@ -105,15 +105,19 @@
                                             <li class=" dropdown">
                                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contact Us</a>
                                                 <ul class="dropdown-menu">
-                                                    <li><a href="/Contact">Your requests</a></li>
-                                                    <li><a href="/Contact/Create">Contact us</a></li>
+                                                    <li><a asp-controller="Contact" asp-action="Index">Your requests</a></li>
+                                                    <li><a asp-controller="Contact" asp-action="Create">Contact us</a></li>
                                                     
                                                 </ul>
 
                                             </li>
                                             <li class=" dropdown">
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">FAQ</a>
+                                                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">FAQ</a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a asp-controller="Ques" asp-action="Index">Question</a></li>
+                                                    <li><a asp-controller="FAQ" asp-action="Index">FAQ</a></li>
 
+                                                </ul>
                                             </li>
                                             <li class="apply_now">
                                                 @{ byte[] userName; }

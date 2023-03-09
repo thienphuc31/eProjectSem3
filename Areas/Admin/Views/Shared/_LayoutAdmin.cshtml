@@ -32,7 +32,7 @@
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
                 <!-- Sidebar - Brand -->
-                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" asp-controller="Home" asp-action="Index" asp-area="Admin">
                     <div class="sidebar-brand-icon rotate-n-15">
                         <i class="fas fa-laugh-wink"></i>
                     </div>
@@ -44,7 +44,7 @@
 
                 <!-- Nav Item - Dashboard -->
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" asp-controller="Home" asp-action="Index" asp-area="Admin">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
                         <span>Dashboard</span>
                     </a>
@@ -67,9 +67,9 @@
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">List</h6>
-                            <a class="collapse-item" href="/Admin/Employee">Employee</a>
-                            <a class="collapse-item" href="/Admin/News">News</a>
-                            <a class="collapse-item" href="/Admin/Event">Event</a>
+                            <a class="collapse-item" asp-controller="Employee" asp-action="Index" asp-area="Admin">Employee</a>
+                            <a class="collapse-item" asp-controller="News" asp-action="Index" asp-area="Admin">News</a>
+                            <a class="collapse-item" asp-controller="Event" asp-action="Index" asp-area="Admin">Event</a>
                         </div>
                     </div>
                 </li>
@@ -83,9 +83,9 @@
                     <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Creating:</h6>
-                            <a class="collapse-item" href="/Admin/Employee/Create">Employee</a>
-                            <a class="collapse-item" href="/Admin/News/Create">News</a>
-                            <a class="collapse-item" href="/Admin/Event/Create">Event</a>
+                            <a class="collapse-item" asp-controller="Employee" asp-action="Create" asp-area="Admin">Employee</a>
+                            <a class="collapse-item" asp-controller="News" asp-action="Create" asp-area="Admin">News</a>
+                            <a class="collapse-item" asp-controller="Event" asp-action="Create" asp-area="Admin">Event</a>
                         </div>
                     </div>
                 </li>
@@ -105,14 +105,14 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin/Contact">
+                    <a class="nav-link" asp-controller="Contact" asp-action="Index" asp-area="admin">
                         <i class="fas fa-fw fa-table"></i>
                         <span>Contact</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" asp-controller="FAQ" asp-action="Index" asp-area="Admin">
                         <i class="fas fa-fw fa-facebook-messenger"></i>
                         <span>FAQ</span>
                     </a>
@@ -313,7 +313,7 @@
                             else
                             {
                                 <li class="nav-item">
-                                    @Html.ActionLink("Login", "Login", "Account")
+                                    <a asp-area="" asp-controller="Account" asp-action="Login">Login </a>
                                 </li>
 }
                                 </li>

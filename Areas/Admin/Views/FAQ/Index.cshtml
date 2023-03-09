@@ -1,0 +1,77 @@
+﻿@model IEnumerable<eProject1.Models.Feedback>
+
+@{ ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml"; }
+
+<style>
+    .card_head {
+        display: flex !important;
+        justify-content: space-between !important;
+    }
+
+    .setup_title {
+        font-size: 40px !important;
+    }
+</style>
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800 text-center mt-5 mb-4 setup_title">Contact List</h1>
+    @* <p class="mb-4">
+        DataTables is a third party plugin that is used to generate the demo table below.
+        For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.
+        </p>*@
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 card_head">
+            <h6 class="m-0 font-weight-bold text-primary">Contact List</h6>
+
+        </div>
+
+        <div class="card-body">
+            <div class="table-responsive">
+
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Customer Question</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+
+                            <tr>
+                                <td>@item.firstName</td>
+                                <td>@item.lastName</td>
+                                <td>@item.email</td>
+                                <td>@item.phone</td>
+                                <td>@item.comments</td>
+
+                                <td>
+                                    <a asp-action="SendEmail" asp-route-id="@item.id"><button class="btn btn-primary">Send Email</button></a>
+                                    <a asp-action="Delete" asp-route-id="@item.id"><button onclick="return confirm('Are you sure want to delete this contact?')" class="btn btn-danger">Delete</button></a>
+
+                                </td>
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    <script type="text/javascript" src="/AssetAdmin/js/demo/datatables-demo.js"></script>
+}
