@@ -37,10 +37,12 @@ namespace eProject1.Controllers
                     {
                         HttpContext.Session.SetString("employee_name", name);
                         HttpContext.Session.SetString("employee_id", em.employee_id);
+                        
+
 
                         if (em.Role == Constants.UserType.Admin)
                         {
-                            return RedirectToAction("Index", "Admin", new { area = "Admin" });
+                            return RedirectToAction("Index", "Home", new { area = "Admin" });
                         }
                         return RedirectToAction("Index", "Home");
                     }

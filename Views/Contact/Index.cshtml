@@ -31,34 +31,35 @@
     <tbody style="border: 1px solid black;">
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.contact_title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.contact_text)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.createdate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.answer)
-                </td>
-                <td>
-                    @if (item.status == 1)
-                    {
-                        <span>Pending</span>
-                    }
-                    else if (item.status == 2)
-                    {
-                        <span class="text-success">Approved</span>
-                    }
-                    else if (item.status == 3)
-                    {
-                        <span class="text-danger">Rejected</span>
-                    }
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.contact_title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.contact_text)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.answer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.createdate)
+            </td>
+            <td>
+                @if (item.status == 1)
+                {
+                    <span>Pending</span>
+                }
+                else if (item.status == 2)
+                {
+                    <span class="text-success">Approved</span>
+                }
+                else if (item.status == 3)
+                {
+                    <span class="text-danger">Rejected</span>
+                }
+            </td>
+        </tr>
         }
     </tbody>
 

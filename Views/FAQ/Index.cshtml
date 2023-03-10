@@ -23,41 +23,41 @@
         <h1>FAQ<span class="m_1">"FAQ, achieve the best results"</span></h1>
     </div>
 </div>
-<div id="support" class="section wb">
-    <div class="container-fulid">
+<div id="support" class="section wb" style="width:100%;">
+    <div class="container-fulid" >
         <div class="section-title text-center">
             <h3>Need Help? Sure we are Online!</h3>
             <p class="lead">If you have any questions feel free to contact us.We welcome Your questions and suggestions.</p>
         </div><!-- end title -->
 
-        <div class="row">
-            <div class="col-xl-6 col-md-12 col-sm-12">
+        <div class="row" style="width:100%;">
+            <div class="col-xl-6 col-md-12 col-sm-12" style="width:100%;">
                 <div class="contact_form">
                     <div id="message"></div>
                     <form id="contactform" asp-controller="FAQ" asp-action="Index" name="contactform" method="post">
                         <fieldset class="row row-fluid">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="padding:5px;">
                                 <input asp-for="firstName"  type="text" id="first_name" class="form-control input_group" placeholder="First Name">
                                 <span class="error_text" id="firstname_error"></span>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="padding:5px;">
                                 <input asp-for="lastName" type="text" id="last_name" class="form-control input_group" placeholder="Last Name">
                                 <span class="error_text" id="lastname_error"></span>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="padding:5px;">
                                 <input asp-for="email" type="email" id="email" class="form-control input_group" placeholder="Your Email">
                                 <span class="error_text" id="email_error"></span>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="padding:5px;">
                                 <input asp-for="phone" type="text" id="phone" class="form-control input_group" placeholder="Your Phone">
                                 <span class="error_text" id="phone_error"></span>
                             </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:5px;">
                                 <textarea asp-for="comments" class="form-control input_group"  id="comments" rows="6" placeholder="Send us a question..."></textarea>
                                 <span class="error_text" id="comments_error"></span>
                             </div>
                             <br />
-                            <div class="text-center pd">
+                            <div class="text-center pd" style="padding:5px;">
                                 <button type="submit" id="submit"  class="btn btn-light btn-radius btn-brd grd1 btn-block">Submit</button>
                             </div>
                         </fieldset>

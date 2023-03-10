@@ -22,10 +22,11 @@ namespace eProject1.Controllers
             var currentEmployeeId = HttpContext.Session.GetString("employee_id");
 
             // Check if the current employee has already registered for this event
-            if (db.EmployeeEvents.Any(ee => ee.event_id == event_id && ee.employee_id == currentEmployeeId))
+            if (db.EmployeeEvents.Any(ee => ee.event_id == event_id && ee.employee_id == currentEmployeeId ))
             {
                 return RedirectToAction("Index", "Home");
             }
+            
 
             // Create a new EmployeeEvent with the current employee's id and the event id from the form
             var newEmployeeEvent = new EmployeeEvent
