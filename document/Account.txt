@@ -1,0 +1,11 @@
+Admin account:
+Username: NguyenTamHieu
+Pass: abc123
+Username: TranLeThienPhuc
+Pass: abc123!
+
+Employee Account:
+Username: Nguyen Duc Anh
+pass: ducanh123
+Username: VuLamMinhTuan
+pass: minhtuan123
